@@ -11,9 +11,9 @@ function Post() {
   // Fetch the story with the given slug
   useEffect(() => {
     storyblokApi
-      .get(`cdn/stories/${slug}`)
+      .get(`cdn/stories/blog/${slug}`)
       .then(({ data }) => setStory(data.story));
-  }, [slug]);
+  }, [slug, storyblokApi]);
 
   // Optional: Enable real-time editing if using Visual Editor
   const liveStory = useStoryblokState(story);

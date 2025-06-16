@@ -21,7 +21,7 @@ function Home() {
       {posts.map((post) => (
         <a
           key={post.id}
-          href={`/${post.slug}`}
+          href={`blog/${post.slug}`}
           className="block p-4 mb-4 bg-white shadow rounded hover:bg-gray-50 transition"
         >
           <h2 className="text-xl font-semibold">{post.content.title}</h2>
