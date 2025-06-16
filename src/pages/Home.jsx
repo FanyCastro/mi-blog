@@ -16,16 +16,16 @@ function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-purple-100">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200">
       {/* Hero Section */}
-      <header className="bg-gradient-to-r from-orange-500 via-purple-500 to-purple-700 py-16 mb-10 shadow-lg">
+      <header className="bg-gradient-to-r from-purple-800 to-indigo-900 py-16 mb-10 shadow-lg">
         <div className="max-w-3xl mx-auto text-center text-white px-4">
           <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">Welcome to My Blog</h1>
-          <p className="text-xl mb-6">Discover articles about technology, programming, and more. Powered by Storyblok & React.</p>
+          <p className="text-xl mb-6 opacity-90">Discover articles about technology, programming, and more. Powered by Storyblok & React.</p>
           <div className="flex justify-center gap-4">
             <a
               href="#posts"
-              className="bg-white text-orange-600 font-semibold px-6 py-2 rounded-full shadow hover:bg-orange-50 transition"
+              className="bg-white text-purple-700 font-semibold px-6 py-2 rounded-full shadow hover:bg-purple-100 transition-all duration-300 transform hover:scale-105"
             >
               Explore Posts
             </a>
@@ -33,7 +33,7 @@ function Home() {
               href="https://www.storyblok.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-purple-700 text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-purple-800 transition"
+              className="bg-indigo-700 text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-indigo-600 transition-all duration-300 transform hover:scale-105"
             >
               What is Storyblok?
             </a>
@@ -43,9 +43,9 @@ function Home() {
 
       {/* About Section */}
       <section className="max-w-3xl mx-auto mb-12 px-4">
-        <div className="bg-white rounded-xl shadow p-6 text-center">
-          <h2 className="text-2xl font-bold mb-2 text-orange-700">About This Blog</h2>
-          <p className="text-gray-600">
+        <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-purple-200">
+          <h2 className="text-2xl font-bold mb-2 text-purple-800">About This Blog</h2>
+          <p className="text-gray-700">
             Hi! I'm Estefania Castro. Here I share my thoughts and tutorials on web and mobile development, Java, React, and more.  
             Enjoy reading and feel free to connect!
           </p>
@@ -53,14 +53,14 @@ function Home() {
       </section>
 
       {/* Posts Grid */}
-      <section id="posts" className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-purple-800 mb-8 text-center">Latest Posts</h2>
+      <section id="posts" className="max-w-6xl mx-auto px-4 py-8">
+        <h2 className="text-3xl font-bold text-indigo-900 mb-8 text-center">Latest Posts</h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <a
               key={post.id}
               href={`blog/${post.slug}`}
-              className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition p-0 flex flex-col overflow-hidden"
+              className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 p-0 flex flex-col overflow-hidden border border-purple-200 hover:border-purple-400"
               aria-label={`Read post: ${post.content.title}`}
             >
               {post.content.image?.filename && (
@@ -71,11 +71,11 @@ function Home() {
                 />
               )}
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold text-orange-700 mb-2 group-hover:underline">{post.content.title}</h3>
+                <h3 className="text-xl font-bold text-purple-700 mb-2 group-hover:underline">{post.content.title}</h3>
                 <p className="text-gray-600 flex-1 mb-4 line-clamp-3">
-                  {post.content.excerpt || 'Read more...'}
+                  {post.content.excerpt || 'Click to read more...'}
                 </p>
-                <span className="mt-auto inline-block text-purple-600 font-semibold group-hover:text-orange-600 transition">
+                <span className="mt-auto inline-block text-indigo-600 font-semibold group-hover:text-purple-800 transition-colors duration-300">
                   Read More →
                 </span>
               </div>
@@ -84,7 +84,7 @@ function Home() {
         </div>
       </section>
 
-      <footer className="mt-16 py-8 text-center text-gray-400 text-sm">
+      <footer className="mt-16 py-8 text-center text-gray-500 text-sm bg-gradient-to-t from-purple-50 to-transparent">
         © {new Date().getFullYear()} Estefania Castro. Powered by React & Storyblok.
       </footer>
     </div>
