@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { useStoryblokApi } from '@storyblok/react';
 import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
+import { getSavedPostIds, savePostId, removeSavedPostId } from '../utils/localStorage'; // Import localStorage utilities
 
 function Home() {
   const storyblokApi = useStoryblokApi();
   const [posts, setPosts] = useState([]);
+  const [likedPostIds, setLikedPostIds] = useState([]); // State for liked post IDs
 
   // Fetch all stories under "blog/" folder (make sure you use this structure in Storyblok)
   useEffect(() => {
@@ -16,8 +18,20 @@ function Home() {
       per_page: 5,
     }).then(({ data }) => {
       setPosts(data.stories);
+      setLikedPostIds(getSavedPostIds()); // Load liked post IDs on fetch
     });
-  }, []);
+  }, [storyblokApi]);
+
+  // Handler to toggle like status of a post
+  const handleToggleLike = (postId) => {
+    if (likedPostIds.includes(postId)) {
+      removeSavedPostId(postId);
+      setLikedPostIds(getSavedPostIds());
+    } else {
+      savePostId(postId);
+      setLikedPostIds(getSavedPostIds());
+    }
+  };
 
   // Definir estilos comunes
   const pageContainerClasses = cn("min-h-screen bg-gradient-to-br from-purple-100 to-indigo-200");
@@ -50,15 +64,17 @@ function Home() {
   const postCardClasses = cn(
     "group bg-white rounded-xl shadow-xl hover:shadow-2xl",
     "transition-all duration-300 transform hover:-translate-y-1 p-0 flex flex-col overflow-hidden",
-    "border border-purple-200 hover:border-purple-400"
+    "border border-purple-200 hover:border-purple-400",
+    "relative" // Add relative positioning for the like button
   );
   const postImageClasses = cn("h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300");
-  const postContentClasses = cn("p-6 flex-1 flex flex-col");
+  const postContentClasses = cn("p-6 flex-1 flex flex-col pb-20 pr-20"); // Increased padding to make more space for the button and link
   const postTitleClasses = cn("text-xl font-bold text-purple-700 mb-2 group-hover:underline");
   const postExcerptClasses = cn("text-gray-600 flex-1 mb-4 line-clamp-3");
   const postReadMoreClasses = cn(
     "mt-auto inline-block text-indigo-600 font-semibold",
-    "group-hover:text-purple-800 transition-colors duration-300"
+    "group-hover:text-purple-800 transition-colors duration-300",
+    "absolute bottom-4 right-28" // Position Read More link further left to avoid overlap with like button
   );
 
   const viewAllCardClasses = cn(
@@ -71,6 +87,13 @@ function Home() {
   const viewAllTextClasses = cn("text-purple-200");
 
   const footerClasses = cn("mt-16 py-8 text-center text-gray-500 text-sm bg-gradient-to-t from-purple-50 to-transparent");
+
+  // Styles for the new like button
+  const likeButtonClasses = (isLiked) => cn(
+    "absolute bottom-4 right-4 p-2 rounded-full shadow-md",
+    "transition-colors duration-200",
+    isLiked ? "bg-red-500 text-white hover:bg-red-600" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
+  );
 
   return (
     <div className={pageContainerClasses}>
@@ -136,11 +159,38 @@ function Home() {
                   Read More →
                 </span>
               </div>
+              {/* Like Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent navigating to post detail
+                  e.stopPropagation(); // Prevent Link click from bubbling up
+                  handleToggleLike(post.id);
+                }}
+                className={likeButtonClasses(likedPostIds.includes(post.id))}
+                aria-label={likedPostIds.includes(post.id) ? "Unlike post" : "Like post"}
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {likedPostIds.includes(post.id) ? (
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    ></path>
+                  ) : (
+                    <path
+                      d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.46L5.78 11.23a4.016 4.016 0 010-5.66c.94-.94 2.45-.94 3.39 0L12 7.74l2.83-2.83c.94-.94 2.45-.94 3.39 0 .94.94.94 2.45 0 3.39L12.09 18.47c-.01.01-.01.01-.02.01-.01.01-.01.01-.02.01z"
+                    ></path>
+                  )}
+                </svg>
+              </button>
             </Link>
           ))}
 
           <Link
-            to="/all-posts"
+            to="/blog/all-posts"
             className={viewAllCardClasses}
             aria-label="View all blog posts"
           >
