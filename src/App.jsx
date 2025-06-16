@@ -5,10 +5,12 @@ import Post from './components/Post';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/blog/:slug" element={<Post />} />
-      </Routes>
+      <div role="main" aria-label="Mi Blog">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/blog/:slug" element={<Post />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
