@@ -1,84 +1,113 @@
-# Mi Blog - Desafío Storyblok Headless CMS
+# My Blog - Storyblok Headless CMS Challenge
 
-Este proyecto es un blog personal moderno, desarrollado con **React**, **Vite** como bundler y **Tailwind CSS** para un diseño responsivo y elegante. La gestión de todo el contenido se realiza a través de **Storyblok**, un potente Headless CMS. Este proyecto fue creado para participar en el [Storyblok Headless CMS Challenge](https://dev.to/devteam/join-the-storyblok-headless-cms-challenge-3000-in-prizes-154n?).
+This project is a modern personal blog, developed with **React**, **Vite** as the bundler, and **Tailwind CSS** for responsive and elegant design. All content management is handled through **Storyblok**, a powerful Headless CMS. This project was created to participate in the [Storyblok Headless CMS Challenge](https://dev.to/devteam/join-the-storyblok-headless-cms-challenge-3000-in-prizes-154n?).
 
-## 🌟 Características Destacadas y Cumplimiento del Challenge
+## 🌟 Key Features and Challenge Compliance
 
-Nos hemos enfocado en los criterios de evaluación del desafío para ofrecer una experiencia de usuario sólida y un desarrollo eficiente:
+We have focused on the challenge evaluation criteria to deliver a solid user experience and efficient development:
 
--   **Uso Significativo de Storyblok**:
-    -   Todo el contenido del blog (posts, títulos, imágenes, contenido enriquecido) se gestiona y consume íntegramente desde Storyblok via su API. Esto demuestra la flexibilidad de un CMS headless.
-    -   Se utiliza el concepto de `stories` y `slugs` para la navegación dinámica, permitiendo añadir y gestionar nuevos posts de forma autónoma desde el panel de Storyblok sin tocar el código.
-    -   Listo para aprovechar el Visual Editor de Storyblok (configurando el dominio en Storyblok) para una experiencia de edición de contenido en tiempo real.
+-   **Significant Use of Storyblok**:
+    -   All blog content (posts, titles, images, rich content) is managed and consumed entirely from Storyblok via its API, demonstrating the flexibility of a headless CMS.
+    -   We utilize the concept of `stories` and `slugs` for dynamic navigation, allowing autonomous addition and management of new posts from the Storyblok panel without touching the code.
+    -   Ready to leverage Storyblok's Visual Editor (by configuring the domain in Storyblok) for real-time content editing experience.
 
--   **Creatividad y Diseño**: 
-    -   Interfaz de usuario moderna y atractiva con una paleta de colores vibrantes (violetas y naranjas/morados) usando Tailwind CSS.
-    -   Diseño responsive que se adapta a diferentes tamaños de pantalla (móvil, tablet, desktop).
-    -   Navegación dinámica con `react-router-dom` para una experiencia de usuario fluida.
+-   **Creativity and Design**: 
+    -   Modern and attractive user interface with a vibrant color palette (violets and oranges/purples) using Tailwind CSS.
+    -   Responsive design that adapts to different screen sizes (mobile, tablet, desktop).
+    -   Dynamic navigation with `react-router-dom` for a fluid user experience.
 
--   **Facilidad de Uso y Accesibilidad (UX/DX)**:
-    -   **UX:** Interfaz limpia y fácil de navegar para el usuario final.
-    -   **Accesibilidad:** Implementación de roles y etiquetas `aria-label` en los componentes clave (`App.jsx`, `Home.jsx`, `Post.jsx`) para mejorar la experiencia de usuarios con lectores de pantalla.
-    -   **DX (Desarrolladores):** Configuración sencilla con Vite, dependencias actualizadas y un workflow de CI/CD para despliegues automáticos.
+-   **Ease of Use and Accessibility (UX/DX)**:
+    -   **UX:** Clean and easy-to-navigate interface for end users.
+    -   **Accessibility:** Implementation of roles and `aria-label` tags in key components (`App.jsx`, `Home.jsx`, `Post.jsx`) to enhance the experience for screen reader users.
+    -   **DX (Developers):** Simple configuration with Vite, updated dependencies, and a CI/CD workflow for automatic deployments.
 
--   **Complejidad**:
-    -   Integración de un CMS headless con un frontend React moderno.
-    -   Manejo de rutas dinámicas y renderizado de contenido enriquecido (Richtext) desde Storyblok.
+-   **Complexity**:
+    -   Integration of a headless CMS with a modern React frontend.
+    -   Handling of dynamic routes and rendering of rich content (Richtext) from Storyblok.
 
--   **(Opcional) Categoría Amazing AI**: Este proyecto está preparado para futuras integraciones de IA. Podría incluir funcionalidades como resúmenes automáticos de posts, búsqueda inteligente o generación de contenido con IA, aprovechando la flexibilidad de Storyblok.
+-   **(Optional) Amazing AI Category**: This project is prepared for future AI integrations. It could include features like automatic post summaries, intelligent search, or AI-powered content generation, leveraging Storyblok's flexibility.
 
-## 🚀 Despliegue y Acceso
+## 🚀 Deployment and Access
 
-Este proyecto está configurado para un despliegue continuo en Vercel.
+This project is configured for continuous deployment on Vercel.
 
-**Demo en vivo:** [https://mi-blog-eta.vercel.app](https://mi-blog-eta.vercel.app) (¡Recuerda actualizar esta URL cuando hagas tu deploy!)
+**Live Demo:** [https://mi-blog-eta.vercel.app](https://mi-blog-eta.vercel.app)
 
-## 📦 Instalación y Uso (Para Testing)
+## 📦 Installation and Usage (For Testing)
 
-Para probar el proyecto localmente o por parte del jurado:
+To test the project locally or by the jury:
 
-1.  **Clona el repositorio:**
+1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/tu-usuario/mi-blog.git
+    git clone https://github.com/your-username/mi-blog.git
     cd mi-blog
     ```
 
-2.  **Instala las dependencias:**
+2.  **Install dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Configura Storyblok API Key:**
-    -   Crea una cuenta gratuita en [Storyblok](https://www.storyblok.com/).
-    -   Crea un nuevo espacio y copia tu `Preview Token`.
-    -   Copia el archivo `.env.example` a `.env` y reemplaza `your_api_key_here` con tu `Preview Token`:
+3.  **Configure Storyblok API Key:**
+    -   Create a free account on [Storyblok](https://www.storyblok.com/).
+    -   Create a new space and copy your `Preview Token`.
+    -   Copy the `.env.example` file to `.env` and replace `your_api_key_here` with your `Preview Token`:
         ```bash
         cp .env.example .env
         ```
 
-4.  **Inicia el servidor de desarrollo:**
+4.  **Start the development server:**
     ```bash
     npm run dev
     ```
 
-5.  Abre [http://localhost:5173/home](http://localhost:5173/home) en tu navegador para ver el blog.
+5.  Open [http://localhost:5173/home](http://localhost:5173/home) in your browser to view the blog.
 
-### **Configuración en Vercel (para deploy)**
+### **Vercel Configuration (for deployment)**
 
-Para el despliegue automático en Vercel:
+For automatic deployment on Vercel:
 
-1.  **Variables de Entorno en Vercel:** Configura `VITE_STORYBLOK_API_KEY` con tu `Preview Token` de Storyblok en el panel de Vercel de tu proyecto.
-2.  **Allowed Domains en Storyblok:** Asegúrate de añadir la URL de tu despliegue en Vercel (ej. `https://mi-blog-eta.vercel.app`) en la sección **API tokens > Allowed Domains** dentro de la configuración de tu espacio de Storyblok.
-3.  **Archivo `vercel.json`:** Este repositorio incluye un archivo `vercel.json` en la raíz para asegurar que React Router maneje correctamente las rutas en Vercel (esencial para Single Page Applications).
+1.  **Environment Variables in Vercel:** Configure `VITE_STORYBLOK_API_KEY` with your Storyblok `Preview Token` in your project's Vercel panel.
+2.  **Allowed Domains in Storyblok:** Make sure to add your Vercel deployment URL (e.g., `https://mi-blog-eta.vercel.app`) in the **API tokens > Allowed Domains** section within your Storyblok space settings.
+3.  **`vercel.json` file:** This repository includes a `vercel.json` file in the root to ensure React Router handles routes correctly in Vercel (essential for Single Page Applications).
 
-## 🛠 Tecnologías Utilizadas
+## 🛠 Technologies Used
 
--   **React**: Biblioteca principal para la interfaz de usuario.
--   **Vite**: Herramienta de construcción y servidor de desarrollo ultrarrápido.
--   **Tailwind CSS**: Framework de CSS para diseño responsivo y utilities-first.
--   **Storyblok**: Headless CMS para la gestión de contenido.
--   **React Router**: Para la navegación en la aplicación.
+-   **React**: Main library for building the user interface. React is a JavaScript library for building user interfaces, particularly single-page applications where you need a fast, interactive user experience.
 
-## 📜 Licencia
+-   **Vite**: Ultra-fast build tool and development server. Vite is a modern frontend build tool that significantly improves the frontend development experience by providing:
+    - Instant server start with native ESM (uses browser's built-in module system for faster development)
+    - Hot Module Replacement (HMR) that's extremely fast
+    - True on-demand compilation
+    - Optimized builds with Rollup
+
+-   **Tailwind CSS**: Utility-first CSS framework for responsive design. Tailwind CSS is a highly customizable, low-level CSS framework that gives you all the building blocks you need to build designs directly in your markup. It provides:
+    - Utility-first approach for rapid UI development
+    - Responsive design utilities
+    - Dark mode support
+    - Customizable design system
+
+-   **Storyblok**: Headless CMS for content management. Storyblok is a headless CMS that provides:
+    - Visual editing experience
+    - Real-time preview
+    - Content versioning
+    - API-first approach
+    - Built-in image optimization
+
+-   **React Router**: For application navigation. React Router is the standard routing library for React that enables:
+    - Dynamic routing
+    - Nested routes
+    - Route parameters
+    - Programmatic navigation
+
+-   **Vercel**: Cloud platform for static sites and Serverless Functions. Vercel provides:
+    - Automatic deployments from Git
+    - Global CDN
+    - Serverless Functions
+    - Edge Functions
+    - Automatic HTTPS
+    - Preview deployments for every push
+
+## 📜 License
 
 MIT
